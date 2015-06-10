@@ -10,3 +10,6 @@ Enterprise Integration Patterns (EIP) ด้วย RabbitMQ
 > 6. Remote procedure call (RPC) ... ประกอบด้วย server, queue ที่รอรับ request และ queue สำหรับ callback เพื่อตอบผลลัพย์กลับไปยัง client
 
 ----------
+
+## อ้างอิง
+http://www.enterpriseintegrationpatterns.com/
