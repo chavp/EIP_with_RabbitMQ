@@ -12,4 +12,5 @@ Enterprise Integration Patterns (EIP) ด้วย RabbitMQ
 ----------
 
 ## อ้างอิง
-http://www.enterpriseintegrationpatterns.com/
+- http://www.enterpriseintegrationpatterns.com/
+- http://www.rabbitmq.com/getstarted.html
