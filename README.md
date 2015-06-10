@@ -11,6 +11,10 @@ Enterprise Integration Patterns (EIP) ด้วย RabbitMQ
 
 ----------
 
+# Enterprise Integration Patterns (EIP)
+
+EIP ประกอบไปด้วย 65 patterns / 6 categories
+
 ## อ้างอิง
 - http://www.enterpriseintegrationpatterns.com/
 - http://www.rabbitmq.com/getstarted.html
