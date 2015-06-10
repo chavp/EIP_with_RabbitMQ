@@ -8,4 +8,5 @@ Enterprise Integration Patterns (EIP) ด้วย RabbitMQ
 > 4. Routing ... ประกอบด้วย sender,  exchange ชนิด direct และ receiver โดย receiver จะผูก queue ของตนเองกับ exchange ด้วย routingKey ตามที่ตนเองสนใจ
 > 5. Topics ... ประกอบด้วย sender,  exchange ชนิด topics และ receiver โดย receiver จะผูก queue ของตนเองกับ exchange ด้วย routingKey ตามที่ตนเองสนใจ แต่จะต่างจาก direct ตรงที่มี การระบุ pattern ไว้ที่ routing key ด้วยเช่น *.red.* หมายความว่า เมื่อ sender push message  ด้วย key อะไรก็แล้วแต่ ที่ตรงกลางมี red มายัง exchange ตัว exchange ก็จะ routing messgae นั้น ไปยัง queue นั้น
 > 6. Remote procedure call (RPC) ... ประกอบด้วย server, queue ที่รอรับ request และ queue สำหรับ callback เพื่อตอบผลลัพย์กลับไปยัง client
+
 ----------
