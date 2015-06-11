@@ -16,7 +16,16 @@ Enterprise Integration Patterns (EIP) ด้วย RabbitMQ
 EIP ประกอบไปด้วย 65 patterns / 6 categories
 
 - Messaging Channels
-  - 1
+  - Message Channel ... เชื่อต่อ applications ด้วย Message Channel
+  - Point-to-Point Channel ... ต้องการส่ง message ไปยังผู้รับ แค่คนเดียวเท่านั้น 
+  - Publish-Subscribe Channel ... กระจายข่าวสารเพื่อ เพื่อรู้โดยทั่วกัน
+  - Datatype Channel ... ผู้ส่งตัดสินใจ ส่งข้อมูลไปยัง channel ต่างๆตามชนิดข้อมูลที่ ผู้รับเฉพาะเจาะจงไว้
+  - Invalid Message Channel  ... ผู้รับไม่รับรู้ข้อมูลที่ รับมาได้ จึงส่งข้อมูลนี้ไป Invalid Message Channel
+  - Dead Letter Channel ... ผู้ส่งข้อมูลไปแล้ว แต่ผู้รับเกิดปัญหาหลุดจากระบบ  ข้อมูลนี้จะถูกส่งต่อไปที่ Dead Letter Channel
+  - Guaranteed Delivery ... ถ้าระบบ messaging ล่ม รับประกันได้เลยว่า ข้อมูลทั้งหมดที่ค้างอยู่ใน channel ยังคงอยู่แน่นอน
+  - Channel Adapter ... เชื่อโยง application ต่างๆที่ไม่ได้เชื่อต่อกันแบบ messaging ให้เชื่อต่อกันโดยรับส่งข้อมูลเป็น messaging ได้ ด้วย Channel Adapter
+  - Messaging Bridge ... เชื่อโยงระหว่าง ระบบ messaging กับ messaging หรือ ระบบอื่นๆ กับ messaging ก็ได้หมด
+  - Message Bus ... ระบบที่จะเชื่อมโยงทุกๆ application ด้วย messaging โดยกำหนด message ข้อมูลที่เป้นมาตรฐานเดียว ส่งผ่านช่องทางเดียวกันคือ Message Bus 
 - Messaging Patterns
 - Messaging Routing
 - Message Transformation
