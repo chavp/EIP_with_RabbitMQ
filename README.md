@@ -25,7 +25,8 @@ EIP ประกอบไปด้วย 65 patterns / 6 categories
   - Guaranteed Delivery ... ถ้าระบบ messaging ล่ม รับประกันได้เลยว่า ข้อมูลทั้งหมดที่ค้างอยู่ใน channel ยังคงอยู่แน่นอน
   - Channel Adapter ... เชื่อโยง application ต่างๆที่ไม่ได้เชื่อต่อกันแบบ messaging ให้เชื่อต่อกันโดยรับส่งข้อมูลเป็น messaging ได้ ด้วย Channel Adapter
   - Messaging Bridge ... เชื่อโยงระหว่าง ระบบ messaging กับ messaging หรือ ระบบอื่นๆ กับ messaging ก็ได้หมด
-  - Message Bus ... ระบบที่จะเชื่อมโยงทุกๆ application ด้วย messaging โดยกำหนด message ข้อมูลที่เป้นมาตรฐานเดียว ส่งผ่านช่องทางเดียวกันคือ Message Bus 
+  - Message Bus ... ระบบที่จะเชื่อมโยงทุกๆ application แบบ messaging โดยกำหนด message ข้อมูลที่เป้นมาตรฐานเดียว ส่งผ่านช่องทางเดียวกันคือ Message Bus 
+
 - Messaging Patterns
 - Messaging Routing
 - Message Transformation
