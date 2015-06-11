@@ -21,14 +21,6 @@ namespace ReceiveLogsDirectError
                     channel.ExchangeDeclare("direct_logs", "direct");
                     var queueName = channel.QueueDeclare().QueueName;
 
-                    //if (args.Length < 1)
-                    //{
-                    //    Console.Error.WriteLine("Usage: {0} [info] [warning] [error]",
-                    //                            Environment.GetCommandLineArgs()[0]);
-                    //    Environment.ExitCode = 1;
-                    //    return;
-                    //}
-
                     channel.QueueBind(queueName, "direct_logs", "error");
 
                     Console.WriteLine(" [*] Waiting for messages. " +

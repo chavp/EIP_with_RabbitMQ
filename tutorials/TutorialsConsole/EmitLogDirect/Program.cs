@@ -16,23 +16,21 @@ namespace EmitLogDirect
             var factory = new ConnectionFactory() { HostName = "localhost" };
             
             using (var connection = factory.CreateConnection())
+            using (var channel = connection.CreateModel())
             {
-                using (var channel = connection.CreateModel())
+                channel.ExchangeDeclare("direct_logs", "direct");
+
+                while (true)
                 {
-                    channel.ExchangeDeclare("direct_logs", "direct");
+                    var severity = randomSeverity();
+                    var message = (args.Length > 1)
+                                    ? string.Join(" ", args.Skip(1).ToArray())
+                                    : "Hello World!";
+                    var body = Encoding.UTF8.GetBytes(message);
+                    channel.BasicPublish("direct_logs", severity, null, body);
+                    Console.WriteLine(" [x] Sent '{0}':'{1}'", severity, message);
 
-                    while (true)
-                    {
-                        var severity = randomSeverity();
-                        var message = (args.Length > 1)
-                                        ? string.Join(" ", args.Skip(1).ToArray())
-                                        : "Hello World!";
-                        var body = Encoding.UTF8.GetBytes(message);
-                        channel.BasicPublish("direct_logs", severity, null, body);
-                        Console.WriteLine(" [x] Sent '{0}':'{1}'", severity, message);
-
-                        Thread.Sleep(TimeSpan.FromSeconds(2));
-                    }
+                    Thread.Sleep(TimeSpan.FromSeconds(2));
                 }
             }
         }

@@ -1,0 +1,6 @@
+[
+{ "ID": 1, "Code": "game-1", "Type": "xbox one"},
+{ "ID": 3, "Code": "game-3", "Type": "xbox one"},
+{ "ID": 4, "Code": "game-4", "Type": "PS4"},
+{ "ID": 5, "Code": "game-5", "Type": "3DS"}
+]
