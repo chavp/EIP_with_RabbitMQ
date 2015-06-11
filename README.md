@@ -16,7 +16,11 @@ Enterprise Integration Patterns (EIP) ด้วย RabbitMQ
 EIP ประกอบไปด้วย 65 patterns / 6 categories
 
 > Messaging Patterns
- - 1
+> Messaging Routing
+> Message Transformation
+> Messaging Endpoints
+> Messaging Channels
+> Systems Mgmt
 
 ## อ้างอิง
 - http://www.enterpriseintegrationpatterns.com/
