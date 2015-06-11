@@ -18,7 +18,7 @@ EIP ประกอบไปด้วย 65 patterns / 6 categories
 - Messaging Channels
   - Message Channel ... เชื่อต่อ applications ด้วย Message Channel
   - Point-to-Point Channel ... ต้องการส่ง message ไปยังผู้รับ แค่คนเดียวเท่านั้น 
-  - Publish-Subscribe Channel ... กระจายข่าวสารเพื่อ เพื่อรู้โดยทั่วกัน
+  - Publish-Subscribe Channel ... กระจายข่าวสารเพื่อ ให้ได้รู้โดยทั่วกัน
   - Datatype Channel ... ผู้ส่งตัดสินใจ ส่งข้อมูลไปยัง channel ต่างๆตามชนิดข้อมูลที่ ผู้รับเฉพาะเจาะจงไว้
   - Invalid Message Channel  ... ผู้รับไม่รับรู้ข้อมูลที่ รับมาได้ จึงส่งข้อมูลนี้ไป Invalid Message Channel
   - Dead Letter Channel ... ผู้ส่งข้อมูลไปแล้ว แต่ผู้รับเกิดปัญหาหลุดจากระบบ  ข้อมูลนี้จะถูกส่งต่อไปที่ Dead Letter Channel
