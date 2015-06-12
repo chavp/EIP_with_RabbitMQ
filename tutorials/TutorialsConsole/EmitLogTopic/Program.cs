@@ -15,23 +15,21 @@ namespace EmitLogTopic
         {
             var factory = new ConnectionFactory() { HostName = "localhost" };
             using (var connection = factory.CreateConnection())
+            using (var channel = connection.CreateModel())
             {
-                using (var channel = connection.CreateModel())
+                channel.ExchangeDeclare("topic_logs", "topic");
+
+                while (true)
                 {
-                    channel.ExchangeDeclare("topic_logs", "topic");
+                    var routingKey = randomRoutingKey();
+                    var message = (args.Length > 1)
+                                     ? string.Join(" ", args.Skip(1).ToArray())
+                                     : "Hello World!";
+                    var body = Encoding.UTF8.GetBytes(message);
+                    channel.BasicPublish("topic_logs", routingKey, null, body);
+                    Console.WriteLine(" [x] Sent '{0}':'{1}'", routingKey, message);
 
-                    while (true)
-                    {
-                        var routingKey = randomRoutingKey();
-                        var message = (args.Length > 1)
-                                         ? string.Join(" ", args.Skip(1).ToArray())
-                                         : "Hello World!";
-                        var body = Encoding.UTF8.GetBytes(message);
-                        channel.BasicPublish("topic_logs", routingKey, null, body);
-                        Console.WriteLine(" [x] Sent '{0}':'{1}'", routingKey, message);
-
-                        Thread.Sleep(TimeSpan.FromSeconds(3));
-                    }
+                    Thread.Sleep(TimeSpan.FromSeconds(3));
                 }
             }
         }

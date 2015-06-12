@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ReceiveLogsTopicLazy
+namespace WidgetInventoryValidator
 {
     using RabbitMQ.Client;
     using RabbitMQ.Client.Events;
@@ -14,25 +14,20 @@ namespace ReceiveLogsTopicLazy
         static void Main(string[] args)
         {
             var factory = new ConnectionFactory() { HostName = "localhost" };
+            var exchange = "new_orders";
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel())
             {
-                channel.ExchangeDeclare("topic_logs", "topic");
-                var queueName = channel.QueueDeclare();
+                channel.ExchangeDeclare(exchange, "topic");
+                channel.ExchangeDeclare("widget", "topic");
 
-                //if (args.Length < 1)
-                //{
-                //    Console.Error.WriteLine("Usage: {0} [binding_key...]",
-                //                            Environment.GetCommandLineArgs()[0]);
-                //    Environment.ExitCode = 1;
-                //    return;
-                //}
+                channel.ExchangeBind("widget", exchange, "*.widget");
 
-                channel.QueueBind(queueName, "topic_logs", "*.*.cat");
-                channel.QueueBind(queueName, "topic_logs", "*.*.dog");
-                channel.QueueBind(queueName, "topic_logs", "lazy.#");
+                var queueName = channel.QueueDeclare("widget", true, false, true, null).QueueName;
 
-                Console.WriteLine(" [*] Waiting for messages. " +
+                channel.QueueBind(queueName, "widget", "#");
+
+                Console.WriteLine(" [*] Waiting for validate new order. " +
                                   "To exit press CTRL+C");
 
                 var consumer = new QueueingBasicConsumer(channel);
@@ -44,8 +39,7 @@ namespace ReceiveLogsTopicLazy
                     var body = ea.Body;
                     var message = Encoding.UTF8.GetString(body);
                     var routingKey = ea.RoutingKey;
-                    Console.WriteLine(" [x] Received '{0}':'{1}'",
-                                      routingKey, message);
+                    Console.WriteLine(" [x] Validated '{0}' ", message);
                 }
             }
         }
